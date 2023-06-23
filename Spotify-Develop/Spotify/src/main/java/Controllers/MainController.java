@@ -28,7 +28,7 @@ public class MainController extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            URL url = new File("C:\\Users\\astan\\Downloads\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\main.fxml").toURI().toURL();
+            URL url = new File("C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\main.fxml").toURI().toURL();
 
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
