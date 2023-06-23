@@ -122,7 +122,7 @@ public class WelcomePageController {
                     root = loader.load();
 
                     LibraryController controller = loader.getController();
-                    controller.showMusics(songList,event);
+                    controller.showMusics(songList);
 
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root);

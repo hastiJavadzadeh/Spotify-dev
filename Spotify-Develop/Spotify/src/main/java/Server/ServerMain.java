@@ -279,7 +279,18 @@ public class ServerMain {
         out.println(res);
         while (resultSet.next()){
             res=new JSONObject();
-            res.put("MusicData",toString(resultSet,"Music"));
+            //res.put("MusicData",toString(resultSet,"Music"));
+            res.put("MusicData",resultSet.toString());
+            res.put("Title",resultSet.getString("Title"));
+            res.put("Path",resultSet.getString("MusicPath"));
+            res.put("TrackID",resultSet.getString("TrackID"));
+            res.put("Artist",resultSet.getString("Artist"));
+            res.put("Album",resultSet.getString("Album"));
+            res.put("Genre",resultSet.getString("Genre"));
+            res.put("Duration",resultSet.getString("Duration"));
+            res.put("ReleaseDate",resultSet.getString("ReleaseDate"));
+            res.put("Popularity",resultSet.getString("Popularity"));
+            res.put("MusicPath",resultSet.getString("MusicPath"));
             out.println(res);
         }
     }

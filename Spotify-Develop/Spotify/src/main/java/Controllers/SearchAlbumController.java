@@ -6,6 +6,7 @@ import Shared.Response;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -92,35 +94,39 @@ public class SearchAlbumController {
                     }
                     songsList.setItems(songList);
 
-                    songsList.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+                    songsList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-                        if (newVal != null) {
-                            String path = songsList.getSelectionModel().getSelectedItem().getMusicPath();
-                            String songTitle = songsList.getSelectionModel().getSelectedItem().getTitle();
-                            String artist = songsList.getSelectionModel().getSelectedItem().getArtist();
-                            String album = songsList.getSelectionModel().getSelectedItem().getAlbum();
-                            String genre = songsList.getSelectionModel().getSelectedItem().getGenre();
-                            double popularity = songsList.getSelectionModel().getSelectedItem().getPopularity();
-                            String releaseDate = songsList.getSelectionModel().getSelectedItem().getReleaseDate();
+                        @Override
+                        public void handle(MouseEvent click) {
 
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/search-song-result.fxml"));
-                            try {
-                                root = loader.load();
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
+                            if (click.getClickCount() == 1) {
+
+                                String path = songsList.getSelectionModel().getSelectedItem().getMusicPath();
+                                String songTitle = songsList.getSelectionModel().getSelectedItem().getTitle();
+                                String artist = songsList.getSelectionModel().getSelectedItem().getArtist();
+                                String album = songsList.getSelectionModel().getSelectedItem().getAlbum();
+                                String genre = songsList.getSelectionModel().getSelectedItem().getGenre();
+                                double popularity = songsList.getSelectionModel().getSelectedItem().getPopularity();
+                                String releaseDate = songsList.getSelectionModel().getSelectedItem().getReleaseDate();
+
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/search-song-result.fxml"));
+                                try {
+                                    root = loader.load();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
+                                SearchSongResultController controller = loader.getController();
+                                controller.info(path,songTitle,artist,album,genre,popularity,releaseDate);
+
+                                stage = (Stage)((Node)click.getSource()).getScene().getWindow();
+                                scene = new Scene(root);
+                                stage.setScene(scene);
+                                stage.show();
                             }
-
-                            SearchSongResultController controller = loader.getController();
-                            //TODO
-                            controller.info(path,songTitle,artist,album,genre,popularity,releaseDate);
-
-                            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                            scene = new Scene(root);
-                            stage.setScene(scene);
-                            stage.show();
                         }
-
                     });
+
                     break;
                 }
             }
