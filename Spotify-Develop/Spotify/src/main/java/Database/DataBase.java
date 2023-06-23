@@ -13,7 +13,7 @@ public class DataBase {
     public static void Init() {
         try {
             Class.forName("org.postgresql.Driver");
-            DataBase.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/AP","postgres","12345");
+            DataBase.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/APpro","postgres","12345");
             DataBase.statement = connection.createStatement();
         }
         catch (Exception e){

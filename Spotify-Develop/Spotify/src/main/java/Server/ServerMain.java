@@ -164,7 +164,19 @@ public class ServerMain {
         out.println(res);
         while(resultSet.next()){
             JSONObject json=new JSONObject();
-            json.put("Music",toString(resultSet,"Music"));
+            //json.put("Music",toString(resultSet,"Music"));
+            json.put("Music",resultSet.toString());
+            json.put("Title",resultSet.getString("Title"));
+            json.put("Path",resultSet.getString("MusicPath"));
+            json.put("TrackID",resultSet.getString("TrackID"));
+            json.put("Artist",resultSet.getString("Artist"));
+            json.put("Album",resultSet.getString("Album"));
+            json.put("Genre",resultSet.getString("Genre"));
+            json.put("Duration",resultSet.getString("Duration"));
+            json.put("ReleaseDate",resultSet.getString("ReleaseDate"));
+            json.put("Popularity",resultSet.getString("Popularity"));
+            json.put("MusicPath",resultSet.getString("MusicPath"));
+
             out.println(json);
         }
     }
@@ -177,7 +189,19 @@ public class ServerMain {
         out.println(res);
         while(resultSet.next()){
             JSONObject json=new JSONObject();
-            json.put("Music",toString(resultSet,"Music"));
+            //json.put("Music",toString(resultSet,"Music"));
+            json.put("Music",resultSet.toString());
+            json.put("Title",resultSet.getString("Title"));
+            json.put("Path",resultSet.getString("MusicPath"));
+            json.put("TrackID",resultSet.getString("TrackID"));
+            json.put("Artist",resultSet.getString("Artist"));
+            json.put("Album",resultSet.getString("Album"));
+            json.put("Genre",resultSet.getString("Genre"));
+            json.put("Duration",resultSet.getString("Duration"));
+            json.put("ReleaseDate",resultSet.getString("ReleaseDate"));
+            json.put("Popularity",resultSet.getString("Popularity"));
+            json.put("MusicPath",resultSet.getString("MusicPath"));
+
             out.println(json);
         }
     }
@@ -190,7 +214,19 @@ public class ServerMain {
         out.println(res);
         while(resultSet.next()){
             JSONObject json=new JSONObject();
-            json.put("Music",toString(resultSet,"Music"));
+            //json.put("Music",toString(resultSet,"Music"));
+            json.put("Music",resultSet.toString());
+            json.put("Title",resultSet.getString("Title"));
+            json.put("Path",resultSet.getString("MusicPath"));
+            json.put("TrackID",resultSet.getString("TrackID"));
+            json.put("Artist",resultSet.getString("Artist"));
+            json.put("Album",resultSet.getString("Album"));
+            json.put("Genre",resultSet.getString("Genre"));
+            json.put("Duration",resultSet.getString("Duration"));
+            json.put("ReleaseDate",resultSet.getString("ReleaseDate"));
+            json.put("Popularity",resultSet.getString("Popularity"));
+            json.put("MusicPath",resultSet.getString("MusicPath"));
+
             out.println(json);
         }
     }
@@ -203,7 +239,19 @@ public class ServerMain {
         out.println(res);
         while(resultSet.next()){
             JSONObject json=new JSONObject();
-            json.put("Music",toString(resultSet,"Music"));
+            //json.put("Music",toString(resultSet,"Music"));
+            json.put("Music",resultSet.toString());
+            json.put("Title",resultSet.getString("Title"));
+            json.put("Path",resultSet.getString("MusicPath"));
+            json.put("TrackID",resultSet.getString("TrackID"));
+            json.put("Artist",resultSet.getString("Artist"));
+            json.put("Album",resultSet.getString("Album"));
+            json.put("Genre",resultSet.getString("Genre"));
+            json.put("Duration",resultSet.getString("Duration"));
+            json.put("ReleaseDate",resultSet.getString("ReleaseDate"));
+            json.put("Popularity",resultSet.getString("Popularity"));
+            json.put("MusicPath",resultSet.getString("MusicPath"));
+
             out.println(json);
         }
     }
@@ -212,7 +260,7 @@ public class ServerMain {
         JSONObject json=new JSONObject();
         json.put("Status","pauseSong");
         response.setJson(json);
-        player.pause();
+        //player.pause();
         return response;
     }
     private static Response playSong(Request request) throws SQLException {
@@ -220,8 +268,8 @@ public class ServerMain {
         String title=req.getString("Title");
         String artist=req.getString("Artist");
         Response response = DataBase.PlaySong(request);
-        String songPath=response.getJson().getString("songPath");
-        player.play(songPath);
+        //String songPath=response.getJson().getString("songPath");
+        //player.play(songPath);
         return response;
     }
     public static void ShowMusics(Request request, PrintWriter out) throws SQLException {

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="657.0" prefWidth="567.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SettingsController">
+    <children>
+        <Button fx:id="buttonExit" layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToWelcome" style="-fx-background-color: transparent;" text="Exit" textFill="WHITE" />
+        <ImageView fx:id="profilePic" fitHeight="176.0" fitWidth="184.0" layoutX="192.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
+        <Label layoutX="250.0" layoutY="263.0" text="profile pic" />
+        <Label layoutX="32.0" layoutY="318.0" text="Username :" textFill="#a8a8a8">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="33.0" layoutY="373.0" text="Email :" textFill="#a8a8a8">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="34.0" layoutY="425.0" text="Password :" textFill="#a8a8a8">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="33.0" layoutY="478.0" text="Birthday :" textFill="#a8a8a8">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="29.0" layoutY="590.0" text="Play List ID :" textFill="#a8a8a8">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="32.0" layoutY="540.0" text="User ID :" textFill="#a8a8a8">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="19.0" />
+            </font>
+        </Label>
+        <Label fx:id="usernameLabel" layoutX="168.0" layoutY="316.0" prefHeight="26.0" prefWidth="164.0" text="username label" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label fx:id="emailLabel" layoutX="123.0" layoutY="371.0" prefHeight="26.0" prefWidth="164.0" text="email label" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label fx:id="passwordLabel" layoutX="177.0" layoutY="423.0" prefHeight="26.0" prefWidth="164.0" text="pass label" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label fx:id="birthdayLabel" layoutX="160.0" layoutY="476.0" prefHeight="26.0" prefWidth="164.0" text="birthdaylabel" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label fx:id="userIDLabel" layoutX="143.0" layoutY="538.0" prefHeight="26.0" prefWidth="164.0" text="userID label" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <Label fx:id="playListIDLabel" layoutX="177.0" layoutY="588.0" prefHeight="26.0" prefWidth="164.0" text="play listID label" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
+

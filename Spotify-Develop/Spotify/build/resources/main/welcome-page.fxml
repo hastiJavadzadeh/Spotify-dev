@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="567.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WelcomePageController">
+    <children>
+        <Button fx:id="buttonLogout" layoutX="452.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="67.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Log out" textFill="#1fd655">
+            <font>
+                <Font name="Arial Black" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="buttonSettings" layoutX="367.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSettings" prefHeight="67.0" prefWidth="101.0" style="-fx-background-color: transparent;" text="Settings" textFill="#1fd655">
+            <font>
+                <Font name="Arial Black" size="15.0" />
+            </font>
+        </Button>
+        <AnchorPane layoutX="81.0" layoutY="91.0" prefHeight="473.0" prefWidth="406.0" style="-fx-background-color: #212121;">
+            <children>
+                <Button fx:id="buttonSearch" layoutX="139.0" layoutY="203.0" mnemonicParsing="false" onAction="#switchToSearch" style="-fx-background-color: transparent;" text="Search" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Black" size="23.0" />
+                    </font>
+                </Button>
+                <Button fx:id="buttonLibrary" layoutX="143.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchToLibrary" style="-fx-background-color: transparent;" text="Library" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Black" size="23.0" />
+                    </font>
+                </Button>
+                <Label fx:id="labelWelcome" layoutX="110.0" layoutY="61.0" text="Welcome !" textFill="WHITE">
+                    <font>
+                        <Font name="Aldhabi" size="65.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <ImageView fitHeight="67.0" fitWidth="200.0" layoutX="38.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@spotifyBlackBackEdit.jpg" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
+

@@ -28,13 +28,13 @@ public class MainController extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            URL url = new File("C:\\Users\\astan\\Downloads\\Spotify-Develop (2)\\Spotify-Develop\\Spotify\\src\\main\\resources\\main.fxml").toURI().toURL();
+            URL url = new File("C:\\Users\\astan\\Downloads\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\main.fxml").toURI().toURL();
 
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
             stage.setTitle("Spotify!");
 
-            Image icon = new Image(new FileInputStream("C:\\Users\\astan\\spotify\\src\\images\\spotifyIcon.png"));
+            Image icon = new Image(new FileInputStream("C:\\Users\\astan\\Downloads\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\spotifyIcon.png"));
             stage.getIcons().add(icon);
 
             stage.setScene(scene);
