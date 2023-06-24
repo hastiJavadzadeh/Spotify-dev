@@ -39,7 +39,7 @@ public class WelcomePageController {
     private ObservableList<Music> songList;
 
 
-    public void switchToLogin(ActionEvent event) throws IOException {//LOG OUT
+    public void switchToLogin(ActionEvent event)  {//LOG OUT
         try {
             Socket socket = new Socket("127.0.0.1", 2345);
             System.out.println("Connected to server!");
@@ -73,7 +73,6 @@ public class WelcomePageController {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-        //Controller.changeScene(event, "/logged-in.fxml");
     }
 
     public void switchToSearch(ActionEvent event) throws IOException {

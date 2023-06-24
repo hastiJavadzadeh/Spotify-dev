@@ -43,7 +43,7 @@ public class LibraryController {
         Controller.changeScene(event,"/add-new-playlist.fxml");
     }
     public void switchToPlaylists(ActionEvent event) throws IOException {
-
+        Controller.changeScene(event,"playlists.fxml");
     }
 
 
@@ -77,6 +77,7 @@ public class LibraryController {
                     String genre = musicListView.getSelectionModel().getSelectedItem().getGenre();
                     double popularity = musicListView.getSelectionModel().getSelectedItem().getPopularity();
                     String releaseDate = musicListView.getSelectionModel().getSelectedItem().getReleaseDate();
+                    int ID = musicListView.getSelectionModel().getSelectedItem().getTrackID();
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/search-song-result.fxml"));
                     try {
@@ -86,7 +87,7 @@ public class LibraryController {
                     }
 
                     SearchSongResultController controller = loader.getController();
-                    controller.info(path,songTitle,artist,album,genre,popularity,releaseDate);
+                    controller.info(path,songTitle,artist,album,genre,popularity,releaseDate,ID);
 
                     stage = (Stage)((Node)click.getSource()).getScene().getWindow();
                     scene = new Scene(root);

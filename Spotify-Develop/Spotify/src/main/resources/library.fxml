@@ -14,7 +14,7 @@
                 <Font name="Arial Narrow" size="23.0" />
             </font>
         </Button>
-        <Button fx:id="goToPlaylistsButton" layoutX="389.0" layoutY="547.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #1fd655;" text="playlists">
+        <Button fx:id="goToPlaylistsButton" layoutX="389.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToPlaylists" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #1fd655;" text="playlists">
             <font>
                 <Font name="Arial Narrow" size="25.0" />
             </font>

@@ -44,20 +44,10 @@ public class SearchSongResultController {
     @FXML
     private Label releaseDateLabel;
 
-    //private static String trackID = null;
-
-    @FXML
-    private Button playButton, pauseButton, previousButton, nextButton;
+    private static int trackID;
 
     private Media media;
     private MediaPlayer mediaPlayer;
-
-    private File directory;
-    private File[] files;
-
-    private ArrayList<File> songs;
-
-    private int songNumber;
 
     private Timer timer;
     private TimerTask task;
@@ -67,16 +57,16 @@ public class SearchSongResultController {
     public void exit(ActionEvent event) throws IOException{
         mediaPlayer.pause();
         //TODO
-        Controller.changeScene(event, "/search-page.fxml");
+        Controller.changeScene(event, "/welcome-page.fxml");
     }
-    public void info(String path, String title, String artist, String album, String genre, double popularity, String releaseDate){
+    public void info(String path, String title, String artist, String album, String genre, double popularity, String releaseDate, int ID){
         songLabel.setText(title);
         artistLabel.setText(artist);
         albumLabel.setText(album);
         genreLabel.setText(genre);
         popularityLabel.setText(String.valueOf(popularity));
         releaseDateLabel.setText(releaseDate);
-//        trackID = ID;
+        trackID = ID;
 
         try {
             Socket socket = new Socket("127.0.0.1", 2345);
@@ -139,7 +129,7 @@ public class SearchSongResultController {
 
             JSONObject json=new JSONObject();
             json.put("Command","Like");
-            json.put("trackID","");
+            json.put("trackID",trackID);
             request.setJson(json);
 
             out.println(request.getJson().toString());

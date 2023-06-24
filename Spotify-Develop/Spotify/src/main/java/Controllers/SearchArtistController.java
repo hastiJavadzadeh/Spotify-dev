@@ -108,6 +108,7 @@ public class SearchArtistController {
                                 String genre = songsList.getSelectionModel().getSelectedItem().getGenre();
                                 double popularity = songsList.getSelectionModel().getSelectedItem().getPopularity();
                                 String releaseDate = songsList.getSelectionModel().getSelectedItem().getReleaseDate();
+                                int ID = songsList.getSelectionModel().getSelectedItem().getTrackID();
 
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/search-song-result.fxml"));
                                 try {
@@ -117,7 +118,7 @@ public class SearchArtistController {
                                 }
 
                                 SearchSongResultController controller = loader.getController();
-                                controller.info(path,songTitle,artist,album,genre,popularity,releaseDate);
+                                controller.info(path,songTitle,artist,album,genre,popularity,releaseDate,ID);
 
                                 stage = (Stage)((Node)click.getSource()).getScene().getWindow();
                                 scene = new Scene(root);
