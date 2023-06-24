@@ -1,6 +1,7 @@
 package Controllers;
 
 import Classes.Music;
+import Classes.Playlist;
 import Shared.Request;
 import Shared.Response;
 import javafx.collections.FXCollections;
@@ -30,6 +31,8 @@ public class LibraryController {
     @FXML
     private ListView<Music> musicListView;
 
+    private ObservableList<Playlist> playlists;
+
     private Parent root;
     private Stage stage;
     private Scene scene;
@@ -43,8 +46,64 @@ public class LibraryController {
     public void switchToNewPlaylist(ActionEvent event) throws IOException {
         Controller.changeScene(event,"/add-new-playlist.fxml");
     }
-    public void switchToPlaylists(ActionEvent event) throws IOException {
-        Controller.changeScene(event,"playlists.fxml");
+    public void switchToPLaylists(ActionEvent event) throws IOException {
+
+        try {
+            Socket socket = new Socket("127.0.0.1", 2345);
+            System.out.println("Connected to server!");
+            InputStream input = socket.getInputStream();
+            OutputStream output = socket.getOutputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(input));
+            PrintWriter out = new PrintWriter(output, true);
+            Request request = new Request();
+            Response response = new Response();
+
+            JSONObject json=new JSONObject();
+            json.put("Command","View playlists");
+            request.setJson(json);
+
+            out.println(request.getJson().toString());
+            response.setJson(new JSONObject(in.readLine()));
+
+            while (response.getJson() != null) {
+
+                JSONObject resp=response.getJson();
+                String status = resp.getString("Status");
+
+                if (status.equals("Display playlists")){
+
+                    response.setJson(new JSONObject(in.readLine()));
+                    playlists = FXCollections.observableArrayList();
+                    while (response.getJson().has("Name")) {
+                        System.out.println(response.getJson().getString("Name"));
+
+                        Playlist playlist = new Playlist(response.getJson().getInt("userID"),response.getJson().getInt("playlistID"),response.getJson().getString("Name"));
+                        playlists.add(playlist);
+
+                        response.setJson(new JSONObject(in.readLine()));
+                    }
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/playlists.fxml"));
+                    root = loader.load();
+
+                    PlaylistsController controller = loader.getController();
+                    controller.showPlaylists(playlists);
+
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
+                    break;
+                }
+            }
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 
