@@ -175,7 +175,7 @@ public class WelcomePageController {
                         SettingsController settingsController = loader.getController();
 
                         settingsController.displayInfo(response.getJson().getString("username"),response.getJson().getString("email"),response.getJson().getString("password"),
-                                response.getJson().getString("birthday"),response.getJson().getString("UserID"),response.getJson().getString("playlistID"));
+                                response.getJson().getString("birthday"),response.getJson().getString("UserID"),response.getJson().getString("playlistID"),response.getJson().getString("profilePath"));
 
                         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);

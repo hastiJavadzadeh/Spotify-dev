@@ -159,6 +159,7 @@ public class ServerMain {
             res.put("birthday" ,resultSet.getString("Birthday"));
             res.put("playlistID",resultSet.getString("PlaylistID"));
             res.put("UserID",resultSet.getString("UserID"));
+            res.put("profilePath",resultSet.getString("ImagePath"));
             out.println(res);
         }
     }
