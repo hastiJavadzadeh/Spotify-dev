@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -43,22 +44,26 @@ public class SearchSongResultController {
     private Label popularityLabel;
     @FXML
     private Label releaseDateLabel;
-
-    private static int trackID;
+    private int trackID;
 
     private Media media;
     private MediaPlayer mediaPlayer;
 
+    @FXML
+    private ProgressBar songProgressBar;
     private Timer timer;
     private TimerTask task;
     private boolean running;
 
 
-    public void exit(ActionEvent event) throws IOException{
-        mediaPlayer.pause();
-        //TODO
-        Controller.changeScene(event, "/welcome-page.fxml");
+    public int getTrackID() {
+        return trackID;
     }
+
+    public void setTrackID(int trackID) {
+        this.trackID = trackID;
+    }
+
     public void info(String path, String title, String artist, String album, String genre, double popularity, String releaseDate, int ID){
         songLabel.setText(title);
         artistLabel.setText(artist);
@@ -66,7 +71,7 @@ public class SearchSongResultController {
         genreLabel.setText(genre);
         popularityLabel.setText(String.valueOf(popularity));
         releaseDateLabel.setText(releaseDate);
-        trackID = ID;
+        setTrackID(ID);
 
         try {
             Socket socket = new Socket("127.0.0.1", 2345);
@@ -103,17 +108,34 @@ public class SearchSongResultController {
 
     }
     public void play() {
+        beginTimer();
         mediaPlayer.play();
     }
     public void pause() {
+        cancelTimer();
         mediaPlayer.pause();
     }
 
     public void beginTimer() {
+        timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                running = true;
+                double current = mediaPlayer.getCurrentTime().toSeconds();
+                double end = media.getDuration().toSeconds();
+                songProgressBar.setProgress(current/end);
 
+                if (current/end == 1) {
+                    cancelTimer();
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(task,1000,1000);
     }
     public void cancelTimer() {
-
+        running = false;
+        timer.cancel();
     }
 
     public void like() {
@@ -151,8 +173,8 @@ public class SearchSongResultController {
             throw new RuntimeException(e);
         }
     }
-    public void addToPlaylist() {
-        //switch to adding playlist scene
+    public void addToPlaylist(ActionEvent event) throws IOException {
+        Controller.changeScene(event, "/add-song-to-playlist.fxml");
     }
 
 }

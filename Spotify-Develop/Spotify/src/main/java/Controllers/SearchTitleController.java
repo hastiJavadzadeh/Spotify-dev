@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -33,8 +34,6 @@ public class SearchTitleController {
     private ObservableList<Music> songList;
 
     private Parent root;
-    private Stage stage;
-    private Scene scene;
 
     public void exit(ActionEvent event) throws IOException{
         Controller.changeScene(event, "/search-page.fxml");
@@ -121,10 +120,14 @@ public class SearchTitleController {
                                 SearchSongResultController controller = loader.getController();
                                 controller.info(path,songTitle,artist,album,genre,popularity,releaseDate,ID);
 
-                                stage = (Stage)((Node)click.getSource()).getScene().getWindow();
-                                scene = new Scene(root);
-                                stage.setScene(scene);
-                                stage.show();
+                                Stage newStage = new Stage();
+                                Image icon = new Image("C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\spotifyIcon.png");
+                                newStage.getIcons().add(icon);
+
+                                Scene scene = new Scene(root);
+                                newStage.setScene(scene);
+                                newStage.show();
+
                             }
                         }
                     });

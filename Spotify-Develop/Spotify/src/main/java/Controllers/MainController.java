@@ -34,7 +34,7 @@ public class MainController extends Application {
             Scene scene = new Scene(root);
             stage.setTitle("Spotify!");
 
-            Image icon = new Image(new FileInputStream("C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\spotifyIcon.png"));
+            Image icon = new Image("C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\spotifyIcon.png");
             stage.getIcons().add(icon);
 
             stage.setScene(scene);
