@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="657.0" prefWidth="567.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddNewPlaylistController">
+   <children>
+      <Button fx:id="addButton" layoutX="469.0" layoutY="313.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #1fd655;" text="add" />
+      <Label layoutX="40.0" layoutY="239.0" text="Pick a name :" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="32.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameTF" layoutX="40.0" layoutY="313.0" prefHeight="31.0" prefWidth="411.0" promptText="Enter name" />
+      <Label layoutX="40.0" layoutY="50.0" text="Adding a new playlist" textFill="#727272">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

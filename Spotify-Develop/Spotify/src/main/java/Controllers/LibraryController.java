@@ -39,6 +39,12 @@ public class LibraryController {
     public void switchToLikedSongs(ActionEvent event) throws IOException {
         //Controller.changeScene(event, "liked-songs.fxml");
     }
+    public void switchToNewPlaylist(ActionEvent event) throws IOException {
+        Controller.changeScene(event,"/add-new-playlist.fxml");
+    }
+    public void switchToPlaylists(ActionEvent event) throws IOException {
+
+    }
 
 
     public void showMusics(ObservableList<Music> songList){
@@ -89,46 +95,6 @@ public class LibraryController {
                 }
             }
         });
-
-
-//        musicListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-//
-//            if (newVal != null) {
-//
-//                String path = musicListView.getSelectionModel().getSelectedItem().getMusicPath();
-//                String songTitle = musicListView.getSelectionModel().getSelectedItem().getTitle();
-//                String artist = musicListView.getSelectionModel().getSelectedItem().getArtist();
-//                String album = musicListView.getSelectionModel().getSelectedItem().getAlbum();
-//                String genre = musicListView.getSelectionModel().getSelectedItem().getGenre();
-//                double popularity = musicListView.getSelectionModel().getSelectedItem().getPopularity();
-//                String releaseDate = musicListView.getSelectionModel().getSelectedItem().getReleaseDate();
-//
-//                FXMLLoader loader = new FXMLLoader(getClass().getResource("/search-song-result.fxml"));
-//                try {
-//                    root = loader.load();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//
-//                SearchSongResultController controller = loader.getController();
-//
-//                controller.info(path,songTitle,artist,album,genre,popularity,releaseDate);
-//
-//                //System.out.println(actionEvent.getSource());
-//
-//                stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-//                scene = new Scene(root);
-//                stage.setScene(scene);
-//                stage.show();
-//
-//            }
-//
-//        });
     }
 }
-//EventHandler<MouseEvent>() {
-//
-//@Override
-//public void handle(MouseEvent event) {
-//        System.out.println("clicked on " + lv.getSelectionModel().getSelectedItem());
-//        }
+

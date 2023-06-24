@@ -9,23 +9,25 @@
 <AnchorPane prefHeight="657.0" prefWidth="567.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LibraryController">
     <children>
         <Button fx:id="buttonExit" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToWelcome" style="-fx-background-color: transparent;" text="Exit" textFill="WHITE" />
-        <Button fx:id="likedSongsButton" layoutX="14.0" layoutY="583.0" mnemonicParsing="false" onAction="#switchToLikedSongs" text="liked songs">
+        <Button fx:id="likedSongsButton" layoutX="220.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToLikedSongs" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #1fd655;" text="liked songs">
             <font>
-                <Font name="Arial Black" size="22.0" />
+                <Font name="Arial Narrow" size="23.0" />
             </font>
         </Button>
-        <Button layoutX="14.0" layoutY="483.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="142.0" text="playlist1">
+        <Button fx:id="goToPlaylistsButton" layoutX="389.0" layoutY="547.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #1fd655;" text="playlists">
             <font>
-                <Font name="Arial Black" size="22.0" />
+                <Font name="Arial Narrow" size="25.0" />
             </font>
         </Button>
-        <Button fx:id="newPlaylistButton" layoutX="22.0" layoutY="546.0" mnemonicParsing="false" text="add new playlist" />
-        <ListView fx:id="musicListView" layoutX="38.0" layoutY="143.0" prefHeight="292.0" prefWidth="492.0" />
-        <Label layoutX="41.0" layoutY="71.0" text="Library" textFill="#b9b9b9">
+        <Button fx:id="newPlaylistButton" layoutX="45.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToNewPlaylist" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #1fd655;" text="add new playlist">
+         <font>
+            <Font name="Arial Narrow" size="16.0" />
+         </font></Button>
+        <ListView fx:id="musicListView" layoutX="38.0" layoutY="143.0" prefHeight="355.0" prefWidth="492.0" />
+        <Label layoutX="38.0" layoutY="58.0" text="Library" textFill="#b9b9b9">
             <font>
                 <Font name="Arial" size="37.0" />
             </font>
         </Label>
     </children>
 </AnchorPane>
-
