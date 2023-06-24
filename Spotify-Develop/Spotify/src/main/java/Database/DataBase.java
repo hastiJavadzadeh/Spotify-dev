@@ -98,8 +98,8 @@ public class DataBase {
         response.setJson(json);
         return response;
     }
-    public static ResultSet ViewProfile(Request request){
-        ResultSet resultSet=DataBase.query("SELECT * FROM \"Spotify\".\"User\" WHERE \"UserID\" = " + "'" + request.getJson().getInt("id") + "'");
+    public static ResultSet ViewProfile(Request request,int ID){
+        ResultSet resultSet=DataBase.query("SELECT * FROM \"Spotify\".\"User\" WHERE \"UserID\" = " + "'" + ID + "'");
         return resultSet;
     }
     public static ResultSet ShowMusic(Request request){
@@ -140,8 +140,11 @@ public class DataBase {
         System.out.println(userID);
         ResultSet resultSet=query("SELECT * FROM \"Spotify\".\"Playlists\" WHERE \"UserID\" = " + "'" + userID + "'" + "AND" + "\"playlist\" = " + "'" + "Likes" + "'");
         resultSet.next();
+
         int playlistID=resultSet.getInt("playlistID");
+
         resultSet=query("SELECT * FROM \"Spotify\".\"LinkPlaylist\" WHERE \"playlistID\" = " + "'" + playlistID + "'" + "AND" + "\"musicID\" = " + "'" + trackID + "'");
+
         if(resultSet.next()){
             query("DELETE FROM \"Spotify\".\"LinkPlaylist\" WHERE \"playlistID\" = " + "'" + playlistID + "'" + "AND" + "\"musicID\" = " + "'" + trackID + "'");
         }

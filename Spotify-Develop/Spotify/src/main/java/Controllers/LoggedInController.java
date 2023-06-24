@@ -68,7 +68,8 @@ public class LoggedInController  {
                     JSONObject resp=response.getJson();
                     String status = resp.getString("Status");
                     if (status.equals("Successfully login")) {
-                        user.put("username", resp.getString("username"));
+                        //System.out.println(resp.getString("id"));
+                        //user.put("username", resp.getString("username"));
                         Controller.changeScene(event, "/welcome-page.fxml");
                         break;
                     } else if (status.equals("Fail login")) {

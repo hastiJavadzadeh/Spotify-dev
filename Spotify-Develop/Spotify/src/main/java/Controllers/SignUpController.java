@@ -84,7 +84,7 @@ public class SignUpController {
                     if (status.equals("Successfully signup")) {
 
                         Controller.changeScene(event, "/welcome-page.fxml");
-                        user.put("username", resp.getString("username"));
+                        //user.put("username", resp.getString("username"));
                         break;
 
                     } else if (status.equals("Fail signup")) {

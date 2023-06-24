@@ -155,9 +155,8 @@ public class WelcomePageController {
             Response response = new Response();
 
             JSONObject json = new JSONObject();
-
             json.put("Command","View profile");
-            json.put("username",user.getString("username"));
+
             request.setJson(json);
 
             out.println(request.getJson().toString());
@@ -167,20 +166,25 @@ public class WelcomePageController {
 
                 JSONObject resp = response.getJson();
                 String status = resp.getString("Status");
-                if (status.equals("Searched profile")) {
+                if (status.equals("View profile")) {
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/settings.fxml"));
-                    root = loader.load();
+                    response.setJson(new JSONObject(in.readLine()));//receive response from server
+                    while (response.getJson().has("user")) {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/settings.fxml"));
+                        root = loader.load();
 
-                    SettingsController settingsController = loader.getController();
+                        SettingsController settingsController = loader.getController();
 
-                    settingsController.displayInfo(response.getJson().getString("username"),response.getJson().getString("email"),response.getJson().getString("password"),
-                            response.getJson().getString("birthday"),response.getJson().getString("UserID"),response.getJson().getString("playlistID"));
+                        settingsController.displayInfo(response.getJson().getString("username"),response.getJson().getString("email"),response.getJson().getString("password"),
+                                response.getJson().getString("birthday"),response.getJson().getString("UserID"),response.getJson().getString("playlistID"));
 
-                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+                        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+
+                        response.setJson(new JSONObject(in.readLine()));//receive response from server
+                    }
 
                     break;
                 }

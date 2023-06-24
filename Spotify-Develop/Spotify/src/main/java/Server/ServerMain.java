@@ -146,13 +146,19 @@ public class ServerMain {
     }
 
     private static void ViewProfile(Request request, PrintWriter out, int ID) throws SQLException {
-        ResultSet resultSet=DataBase.ViewProfile(request);
+        ResultSet resultSet=DataBase.ViewProfile(request,ID);
         JSONObject res=new JSONObject();
         res.put("Status","View profile");
         out.println(res);
         while (resultSet.next()){
             res=new JSONObject();
             res.put("user",toString(resultSet,"User"));
+            res.put("username",resultSet.getString("Username"));
+            res.put("password",resultSet.getString("Password"));
+            res.put("email",resultSet.getString("Email"));
+            res.put("birthday" ,resultSet.getString("Birthday"));
+            res.put("playlistID",resultSet.getString("PlaylistID"));
+            res.put("UserID",resultSet.getString("UserID"));
             out.println(res);
         }
     }
