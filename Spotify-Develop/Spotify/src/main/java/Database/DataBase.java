@@ -161,17 +161,22 @@ public class DataBase {
 
     public static void addToPlaylist(String name, int userID, int trackID) throws SQLException {
         ResultSet resultSet=query("SELECT * FROM \"Spotify\".\"Playlists\" WHERE \"playlist\" = " + "'" + name + "'" + "AND" + "\"UserID\" = " + "'" + userID + "'");
+        resultSet.next();
         int playlistID=resultSet.getInt("PlaylistID");
-        String sql = "INSERT INTO\"Spotify\".\"LinkPlaylist\" VALUES ('" +  playlistID + "', '" + trackID + "')";
-        query(sql);
+        resultSet=query("SELECT * FROM \"Spotify\".\"LinkPlaylist\" WHERE \"playlistID\" = " + "'" + playlistID + "'" + "AND" + "\"musicID\" = " + "'" + trackID + "'");
+        if(!resultSet.next()){
+            String sql = "INSERT INTO\"Spotify\".\"LinkPlaylist\" VALUES ('" +  playlistID + "', '" + trackID + "')";
+            query(sql);
+        }
     }
     public static ResultSet ViewPlaylists(Request request, int ID) {
         ResultSet resultSet=DataBase.query("SELECT * FROM \"Spotify\".\"Playlists\" WHERE \"UserID\" = " + "'" + ID + "'");
         return resultSet;
     }
 
-    public static ResultSet ShowPlaylist(int playlistID) {
+    public static ResultSet ShowPlaylist(int playlistID) throws SQLException {
         ResultSet resultSet=DataBase.query("SELECT * FROM \"Spotify\".\"LinkPlaylist\" WHERE \"playlistID\" = " + "'" + playlistID + "'");
+//        System.out.println(playlistID);
         return resultSet;
     }
     public static ResultSet SearchPlaylist(Request request, int userID) {
@@ -180,9 +185,10 @@ public class DataBase {
         return resultSet;
     }
 
-    public static ResultSet findSong(int trackID) {
+    public static ResultSet findSong(int trackID) throws SQLException {
         ResultSet resultSet=query("SELECT * FROM \"Spotify\".\"Music\" WHERE \"TrackID\" = " +
                 "'" + trackID + "'");
+//        System.out.println(trackID);
         return resultSet;
 
     }

@@ -26,7 +26,7 @@
                         <Font name="Arial Black" size="23.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonLibrary" layoutX="143.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchToLibrary" style="-fx-background-color: transparent;" text="Library" textFill="WHITE">
+                <Button fx:id="buttonLibrary" layoutX="140.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToLibrary" style="-fx-background-color: transparent;" text="Library" textFill="WHITE">
                     <font>
                         <Font name="Arial Black" size="23.0" />
                     </font>
@@ -45,4 +45,3 @@
         </ImageView>
     </children>
 </AnchorPane>
-

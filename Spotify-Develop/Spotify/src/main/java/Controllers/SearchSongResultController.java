@@ -9,11 +9,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -23,10 +26,9 @@ import org.json.JSONObject;
 import java.io.*;
 import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 import static Controllers.LoggedInController.user;
 
@@ -44,6 +46,8 @@ public class SearchSongResultController {
     private Label popularityLabel;
     @FXML
     private Label releaseDateLabel;
+    @FXML
+    private ImageView coverImage;
     private int trackID;
 
     private Media media;
@@ -55,6 +59,7 @@ public class SearchSongResultController {
     private TimerTask task;
     private boolean running;
 
+    private Parent root;
 
     public int getTrackID() {
         return trackID;
@@ -72,10 +77,10 @@ public class SearchSongResultController {
         popularityLabel.setText(String.valueOf(popularity));
         releaseDateLabel.setText(releaseDate);
         setTrackID(ID);
+//        System.out.println(ID);
 
         try {
-            Socket socket = new Socket("127.0.0.1", 2345);
-            System.out.println("Connected to server!");
+            Socket socket = MainController.socket;
             InputStream input = socket.getInputStream();
             OutputStream output = socket.getOutputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(input));
@@ -94,15 +99,25 @@ public class SearchSongResultController {
 
             while (response.getJson() != null) {
 
-                media = new Media(new File(path).toURI().toString());
-                mediaPlayer = new MediaPlayer(media);
+                if (response.getJson().getString("Status").equals("Find song path")){
+                    receiveFile(response.getJson(),title,artist);
 
-                break;
+                    //String coverPath = receiveImage(response.getJson().getString("Cover"));
+                    Image cover = new Image("C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\"+ trackID +".jpg");
+                    coverImage.setImage(cover);
+
+                    media = new Media(new File(path).toURI().toString());
+                    mediaPlayer = new MediaPlayer(media);
+                    break;
+                }
+
             }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (JSONException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
@@ -140,8 +155,7 @@ public class SearchSongResultController {
 
     public void like() {
         try {
-            Socket socket = new Socket("127.0.0.1", 2345);
-            System.out.println("Connected to server!");
+            Socket socket = MainController.socket;
             InputStream input = socket.getInputStream();
             OutputStream output = socket.getOutputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(input));
@@ -173,8 +187,35 @@ public class SearchSongResultController {
             throw new RuntimeException(e);
         }
     }
-    public void addToPlaylist(ActionEvent event) throws IOException {
-        Controller.changeScene(event, "/add-song-to-playlist.fxml");
+    public void addToPlaylist() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/add-song-to-playlist.fxml"));
+        root = loader.load();
+
+        Stage newStage = new Stage();
+        Image icon = new Image("C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\spotifyIcon.png");
+        newStage.getIcons().add(icon);
+
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.show();
+    }
+
+    private static void receiveFile(JSONObject jsonObject,String title, String artist) throws Exception {
+        System.out.println("here");
+        String encodedData = jsonObject.getString("musicData");
+        byte[] fileData = Base64.getDecoder().decode(encodedData);
+        String filePath = "C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\"+ title + artist +".mp3";//TODO
+        Files.write(Paths.get(filePath), fileData);
+        //player.play(filePath);
+    }
+
+    public static String receiveImage(String cover,String title,String artist) throws IOException {
+        String encodedImageData = cover;
+        byte[] fileData = Base64.getDecoder().decode(encodedImageData);
+        String filePath = "C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\"+ title + artist +".jpg";
+        Files.write(Paths.get(filePath), fileData);
+        return (filePath);
+//        System.out.println("Image file is saved at: " + ;
     }
 
 }

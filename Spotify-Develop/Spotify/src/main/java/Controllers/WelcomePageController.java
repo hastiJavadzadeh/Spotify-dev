@@ -37,12 +37,12 @@ public class WelcomePageController {
     private Label labelWelcome;
 
     private ObservableList<Music> songList;
+    private ObservableList<Music> downloadsList;
 
 
     public void switchToLogin(ActionEvent event)  {//LOG OUT
         try {
-            Socket socket = new Socket("127.0.0.1", 2345);
-            System.out.println("Connected to server!");
+            Socket socket = MainController.socket;
             InputStream input = socket.getInputStream();
             OutputStream output = socket.getOutputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(input));
@@ -82,8 +82,7 @@ public class WelcomePageController {
     public void switchToLibrary(ActionEvent event) throws IOException {
 
         try {
-            Socket socket = new Socket("127.0.0.1", 2345);
-            System.out.println("Connected to server!");
+            Socket socket = MainController.socket;
             InputStream input = socket.getInputStream();
             OutputStream output = socket.getOutputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(input));
@@ -108,7 +107,7 @@ public class WelcomePageController {
                     response.setJson(new JSONObject(in.readLine()));
                     songList = FXCollections.observableArrayList();
                     while (response.getJson().has("MusicData")) {
-
+                        SearchSongResultController.receiveImage(response.getJson().getString("Cover"),response.getJson().getString("Title"),response.getJson().getString("Artist"));
                         Music music = new Music(response.getJson().getInt("TrackID"),response.getJson().getString("Title"),response.getJson().getString("Artist"),
                                 response.getJson().getString("Album"),response.getJson().getString("Genre"),response.getJson().getString("Duration"),
                                 response.getJson().getString("ReleaseDate"),response.getJson().getDouble("Popularity"),response.getJson().getString("MusicPath"));
@@ -144,8 +143,7 @@ public class WelcomePageController {
     public void switchToSettings(ActionEvent event) {
 
         try {
-            Socket socket = new Socket("127.0.0.1", 2345);
-            System.out.println("Connected to server!");
+            Socket socket = MainController.socket;
             InputStream input = socket.getInputStream();
             OutputStream output = socket.getOutputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(input));

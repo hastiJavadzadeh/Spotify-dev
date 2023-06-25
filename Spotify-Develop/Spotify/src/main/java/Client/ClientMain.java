@@ -141,7 +141,7 @@ public class ClientMain {
                         json=new JSONObject();
                         json.put("Command","toPlaylist");
                         json.put("trackID",response.getJson().getString("trackID"));
-                        json.put("playlist",name);
+                        json.put("Name",name);
                         request.setJson(json);
                         return request;
                 }
@@ -173,7 +173,20 @@ public class ClientMain {
             case "added to playlist":
                 System.out.println("Added to playlist.");
                 return ShowUserMenu();
-
+            case "Display playlists":
+                response.setJson(new JSONObject(in.readLine()));//receive response from server
+                while (response.getJson().has("Name")) {
+                    System.out.println(response.getJson().getString("Name"));
+                    response.setJson(new JSONObject(in.readLine()));//receive response from server
+                }
+                System.out.println("Enter playlist to show songs :");
+                inp.nextLine();
+                String name=inp.nextLine();
+                JSONObject json=new JSONObject();
+                json.put("Command","Show playlist songs");
+                json.put("Name",name);
+                request.setJson(json);
+                return request;
         }
         return request;
     }
@@ -245,7 +258,10 @@ public class ClientMain {
                 break;
 
             case 8://View playlist
-
+                json=new JSONObject();
+                json.put("Command","View playlists");
+                request.setJson(json);//create request
+                break;
 
             case 9://Logout
                 json=new JSONObject();

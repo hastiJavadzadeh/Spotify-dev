@@ -9,8 +9,7 @@
 <AnchorPane prefHeight="657.0" prefWidth="567.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SettingsController">
     <children>
         <Button fx:id="buttonExit" layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToWelcome" style="-fx-background-color: transparent;" text="Exit" textFill="WHITE" />
-        <ImageView fx:id="profilePic" fitHeight="176.0" fitWidth="184.0" layoutX="192.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
-        <Label layoutX="250.0" layoutY="263.0" text="profile pic" />
+        <ImageView fx:id="profilePic" fitHeight="243.0" fitWidth="242.0" layoutX="163.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
         <Label layoutX="32.0" layoutY="318.0" text="Username :" textFill="#a8a8a8">
             <font>
                 <Font name="Arial Rounded MT Bold" size="19.0" />
@@ -73,4 +72,3 @@
         </Label>
     </children>
 </AnchorPane>
-

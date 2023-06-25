@@ -38,13 +38,13 @@
                 <Font name="Arial Black" size="16.0" />
             </font>
         </Label>
-        <ImageView fx:id="coverImage" fitHeight="257.0" fitWidth="287.0" layoutX="103.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
-        <Button fx:id="playButton" layoutX="166.0" layoutY="392.0" mnemonicParsing="false" onAction="#play" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1fd655;" text="Play">
+        <ImageView fx:id="coverImage" fitHeight="249.0" fitWidth="287.0" layoutX="103.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+        <Button fx:id="playButton" layoutX="153.0" layoutY="393.0" mnemonicParsing="false" onAction="#play" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1fd655;" text="Play">
             <font>
                 <Font name="Arial Black" size="15.0" />
             </font></Button>
         <ProgressBar fx:id="songProgressBar" layoutX="4.0" layoutY="356.0" prefHeight="23.0" prefWidth="496.0" progress="0.0" />
-        <Button fx:id="pauseButton" layoutX="65.0" layoutY="392.0" mnemonicParsing="false" onAction="#pause" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1fd655;" text="pause">
+        <Button fx:id="pauseButton" layoutX="64.0" layoutY="393.0" mnemonicParsing="false" onAction="#pause" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1fd655;" text="pause">
             <font>
                 <Font name="Arial Black" size="15.0" />
             </font></Button>
@@ -68,12 +68,12 @@
                 <Font name="Arial Black" size="20.0" />
             </font>
         </Label>
-        <Button fx:id="likeB" layoutX="268.0" layoutY="392.0" mnemonicParsing="false" onAction="#like" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1fd655;" text="Like">
+        <Button fx:id="likeB" layoutX="244.0" layoutY="393.0" mnemonicParsing="false" onAction="#like" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #1fd655;" text="Like">
             <font>
                 <Font name="Arial Black" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="addToPlaylistB" layoutX="369.0" layoutY="392.0" mnemonicParsing="false" onAction="#addToPlaylist" prefHeight="33.0" prefWidth="104.0" style="-fx-background-color: #1fd655;" text="Add to playlist">
+        <Button fx:id="addToPlaylistB" layoutX="336.0" layoutY="393.0" mnemonicParsing="false" onAction="#addToPlaylist" prefHeight="33.0" prefWidth="104.0" style="-fx-background-color: #1fd655;" text="Add to playlist">
             <font>
                 <Font name="Arial Black" size="11.0" />
             </font>

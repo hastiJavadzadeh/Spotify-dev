@@ -19,8 +19,7 @@ public class AddSongToPlaylistController {
     public void add(ActionEvent event) {
         if (!nameTF.getText().trim().isEmpty()) {
             try {
-                Socket socket = new Socket("127.0.0.1", 2345);
-                System.out.println("Connected to server!");
+                Socket socket = MainController.socket;
                 InputStream input = socket.getInputStream();
                 OutputStream output = socket.getOutputStream();
                 BufferedReader in = new BufferedReader(new InputStreamReader(input));

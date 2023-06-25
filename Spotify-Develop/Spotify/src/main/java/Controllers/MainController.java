@@ -18,6 +18,8 @@ import java.rmi.UnknownHostException;
 import java.sql.SQLException;
 
 public class MainController extends Application {
+
+    public static Socket socket;
     public void switchToLogin(ActionEvent event) throws IOException {
         Controller.changeScene(event,"/logged-in.fxml");
     }
@@ -28,6 +30,10 @@ public class MainController extends Application {
     @Override
     public void start(Stage stage) {
         try {
+            socket = new Socket("127.0.0.1", 2345);
+            System.out.println("Connected to server!");
+
+
             URL url = new File("C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\main.fxml").toURI().toURL();
 
             Parent root = FXMLLoader.load(url);

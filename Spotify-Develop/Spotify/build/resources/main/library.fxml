@@ -9,17 +9,12 @@
 <AnchorPane prefHeight="657.0" prefWidth="567.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LibraryController">
     <children>
         <Button fx:id="buttonExit" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToWelcome" style="-fx-background-color: transparent;" text="Exit" textFill="WHITE" />
-        <Button fx:id="likedSongsButton" layoutX="220.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToLikedSongs" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #1fd655;" text="liked songs">
-            <font>
-                <Font name="Arial Narrow" size="23.0" />
-            </font>
-        </Button>
-        <Button fx:id="goToPlaylistsButton" layoutX="389.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToPlaylists" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: #1fd655;" text="playlists">
+        <Button fx:id="goToPlaylistsButton" layoutX="304.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToPLaylists" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #1fd655;" text="playlists">
             <font>
                 <Font name="Arial Narrow" size="25.0" />
             </font>
         </Button>
-        <Button fx:id="newPlaylistButton" layoutX="45.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToNewPlaylist" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #1fd655;" text="add new playlist">
+        <Button fx:id="newPlaylistButton" layoutX="123.0" layoutY="547.0" mnemonicParsing="false" onAction="#switchToNewPlaylist" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #1fd655;" text="add new playlist">
          <font>
             <Font name="Arial Narrow" size="16.0" />
          </font></Button>

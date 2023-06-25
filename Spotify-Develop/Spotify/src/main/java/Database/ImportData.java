@@ -17,12 +17,15 @@ public class ImportData {
         Music ILoveYouBillie=new Music(UUID.randomUUID().toString().hashCode(),"I love you","Billie Eilish","","Pop","4,51","2019",9.1,"C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\Billie_Eilish_I_Love_You_128.mp3");
         Music ILoveYouRF=new Music(UUID.randomUUID().toString().hashCode(),"I love you","Rauf & Faik","Запомни I love you","Pop","2,50","2019",9.1,"C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\rauf_faik_zapomni_i_love_you 128.mp3");
         Music That_sNotHowThisWorks=new Music(UUID.randomUUID().toString().hashCode(), "That_s Not How This Works","Charlie Puth","","Pop","2,45","2023",9.1,"C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\Charlie Puth - That_s Not How This Works (feat. Dan Shay).mp3");
+        Music Attention=new Music(UUID.randomUUID().toString().hashCode(), "Attention","Charlie Puth","","Pop","3,51","2017",9.1,"C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\Charlie-Puth-Attention.mp3");
+
 
         musics.add(SoldierSide);
         musics.add(BornToTouchYourFeelings);
         musics.add(ILoveYouBillie);
         musics.add(ILoveYouRF);
         musics.add(That_sNotHowThisWorks);
+        musics.add(Attention);
 
         for(Music music : musics){
             int ID=music.getTrackID();
@@ -32,7 +35,8 @@ public class ImportData {
             if(!resultSet.next()){
                 String sql = "INSERT INTO\"Spotify\".\"Music\" VALUES ('"  + music.getTitle() + "', '" +
                         music.getArtist() + "', '" + music.getAlbum() + "','" + music.getGenre() + "', '" + music.getDuration() + "', '" +
-                        music.getReleaseDate() + "', '" + music.getPopularity() + "','" + music.getMusicPath() +"', '"+ music.getTrackID() + "')";
+                        music.getReleaseDate() + "', '" + music.getPopularity() + "','" + music.getMusicPath() +"', '"+ music.getTrackID() +"','"+
+                        "C:\\Users\\astan\\Spotify-dev\\Spotify-Develop\\Spotify\\src\\main\\resources\\IMG_20200416_235041_503.jpg" + "')";
                 DataBase.query(sql);
             }
         }
